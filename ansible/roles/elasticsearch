@@ -98,3 +98,29 @@ network.host: 127.0.0.1
 http.host: 0.0.0.0
 http.port: 9200
 discovery.type: single-node
+
+
+---
+- name: Установка elasticsearch
+  apt:
+    deb: "https://mirror.yandex.ru/mirrors/elastic/7/pool/main/e/elasticsearch/elasticsearch-7.15.1-amd64.deb"
+
+- name: Копируем конфиг файл elasticsearch
+  copy:
+    src: ./files/elastic_conf.yml
+    dest: /etc/elasticsearch/elasticsearch.yml
+
+- name: enable and restart elastic
+  ansible.builtin.systemd:
+    name: elasticsearch
+    enabled: true
+    daemon_reload: true
+    masked: no
+    state: started
+
+- name: Перезапускаем elasticsearch и добавляем в автозагрузку
+  service:
+    name: elasticsearch
+    state: restarted
+    enabled: yes
+
