@@ -1,0 +1,22 @@
+server.port: 5601
+server.host: "0.0.0.0"
+elasticsearch.hosts: ["http://{{elastic_httphost}}"]
+
+
+---
+- name: Установка пакета kibana
+  apt:
+    deb: "https://mirror.yandex.ru/mirrors/elastic/7/pool/main/k/kibana/kibana-7.15.1-amd64.deb"
+
+- name: Копируем конфигурационный файл kibana
+  template:
+    src: ./templates/kibana.j2
+    dest: /etc/kibana/kibana.yml
+
+- name: enable and restart kibana
+  ansible.builtin.systemd:
+    name: kibana
+    enabled: true
+    daemon_reload: true
+    masked: no
+    state: started
