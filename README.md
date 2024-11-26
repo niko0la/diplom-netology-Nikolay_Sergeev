@@ -109,3 +109,19 @@ Cоздайте ВМ, разверните на ней Elasticsearch. Устан
 1. Вопросы вида «Ничего не работает. Не запускается. Всё сломалось». Дипломный руководитель не сможет ответить на такой вопрос без дополнительных уточнений. Цените своё время и время других.
 2. Откладывание выполнения дипломной работы на последний момент.
 3. Ожидание моментального ответа на свой вопрос. Дипломные руководители — работающие инженеры, которые занимаются, кроме преподавания, своими проектами. Их время ограничено, поэтому постарайтесь задавать правильные вопросы, чтобы получать быстрые ответы :)
+
+![Image alt](https://github.com/niko0la/diplom-netology-Nikolay_Sergeev/blob/main/scrin/ansible-starts.png)
+![Image alt](https://github.com/niko0la/diplom-netology-Nikolay_Sergeev/blob/main/scrin/balanser.png)
+![Image alt](https://github.com/niko0la/diplom-netology-Nikolay_Sergeev/blob/main/scrin/curl-Kibana-elastick.png)
+![Image alt](https://github.com/niko0la/diplom-netology-Nikolay_Sergeev/blob/main/scrin/html_curl-V-linux.png)
+![Image alt](https://github.com/niko0la/diplom-netology-Nikolay_Sergeev/blob/main/scrin/html_curl-V-ngingx.png)
+![Image alt](https://github.com/niko0la/diplom-netology-Nikolay_Sergeev/blob/main/scrin/kibana-log.png)
+![Image alt](https://github.com/niko0la/diplom-netology-Nikolay_Sergeev/blob/main/scrin/nginx.png)
+![Image alt](https://github.com/niko0la/diplom-netology-Nikolay_Sergeev/blob/main/scrin/server_terra-2.png)
+![Image alt](https://github.com/niko0la/diplom-netology-Nikolay_Sergeev/blob/main/scrin/subnet1.png)
+![Image alt](https://github.com/niko0la/diplom-netology-Nikolay_Sergeev/blob/main/scrin/subnet2.png)
+![Image alt](https://github.com/niko0la/diplom-netology-Nikolay_Sergeev/blob/main/scrin/terraform-2.png)
+![Image alt](https://github.com/niko0la/diplom-netology-Nikolay_Sergeev/blob/main/scrin/terrform-1.png)
+![Image alt](https://github.com/niko0la/diplom-netology-Nikolay_Sergeev/blob/main/scrin/zaabix-1.png)
+![Image alt](https://github.com/niko0la/diplom-netology-Nikolay_Sergeev/blob/main/scrin/zabbix-2.png)
+![Image alt](https://github.com/niko0la/diplom-netology-Nikolay_Sergeev/blob/main/scrin/zabbix-6.png)
