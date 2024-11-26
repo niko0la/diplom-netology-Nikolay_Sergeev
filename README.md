@@ -129,3 +129,4 @@ zabbix Admin\zabbix
 ![Image alt](https://github.com/niko0la/diplom-netology-Nikolay_Sergeev/blob/main/scrin/zabbix-2.png)
 ![Image alt](https://github.com/niko0la/diplom-netology-Nikolay_Sergeev/blob/main/scrin/zabbix-6.png)
 ![Image alt](https://github.com/niko0la/diplom-netology-Nikolay_Sergeev/blob/main/scrin/bastionserv.png)
+![Image alt](https://github.com/niko0la/diplom-netology-Nikolay_Sergeev/blob/main/scrin/scren%207%20day.png)
