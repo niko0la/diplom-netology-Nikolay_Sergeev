@@ -1,0 +1,27 @@
+---
+# handlers file for nginx
+- name: Restart Nginx
+  service:
+    name: nginx
+    state: restarted
+
+---
+ tasks file for nginx
+- name: Установка Nginx
+  apt:
+    name: nginx
+    state: latest
+    update_cache: yes
+    
+- name: Запуск Nginx
+  service:
+    name: nginx
+    state: started
+    enabled: yes
+    
+- name: Создание HTML-странички
+  copy:
+    content: "<html><head><title>Diploma Sergeev NV</title></head><body><h1>Sergeev NV</h1></body></html>"
+    dest: /var/www/html/index.html
+    owner: www-data
+    group: www-data
