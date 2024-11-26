@@ -1,0 +1,160 @@
+---
+- name: download file repository zabbix repository
+  ansible.builtin.get_url:
+    url: "https://repo.zabbix.com/zabbix/6.0/ubuntu/pool/main/z/zabbix-release/zabbix-release_6.0-6+ubuntu24.04_all.deb"
+    dest: /tmp
+
+
+- name: install the zabbix repository
+  ansible.builtin.apt:
+    deb: /tmp/zabbix-release_6.0-6+ubuntu24.04_all.deb
+    
+
+- name: update cache repository
+  ansible.builtin.apt:
+    update_cache: yes
+
+
+- name: install zabbix packages
+  ansible.builtin.apt:
+    name:
+      - zabbix-server-mysql
+      - zabbix-frontend-php
+      - zabbix-nginx-conf
+      - zabbix-sql-scripts
+      - zabbix-agent
+    state: present  
+
+- name: copy nginx configuration
+  ansible.builtin.copy:
+    src: ./templates/nginx.conf
+    dest: /etc/zabbix/nginx.conf
+    owner: root
+    group: root
+    mode: '0644'
+    backup: yes 
+
+- name: Install Mysql
+  ansible.builtin.apt:
+    name:
+      - mysql-server
+      - python3-mysqldb
+    state: present
+
+- name: enable and restart mysql
+  ansible.builtin.systemd:
+    name: mysql
+    enabled: true
+    masked: no
+    state: restarted
+
+- name: create mysql database
+  community.mysql.mysql_db:
+    name: zabbix
+    encoding: utf8mb4
+    collation: utf8mb4_bin
+    state: present
+
+- name: add user in mysql
+  community.mysql.mysql_user:
+    name: zabbix
+    password: "zabbix"
+    priv: "*.*:ALL,GRANT"
+    state: present
+
+- name: unpack
+  ansible.builtin.shell:
+    cmd: gunzip /usr/share/zabbix-sql-scripts/mysql/server.sql.gz
+
+
+- name: import
+  community.mysql.mysql_db:
+    name: zabbix
+    state: import
+    target: /usr/share/zabbix-sql-scripts/mysql/server.sql
+
+- name: setting zabbix db
+  ansible.builtin.lineinfile:
+    path: /etc/zabbix/zabbix_server.conf
+    insertafter: "DBPassword="
+    line: DBPassword=zabbix
+
+#- name: setting port
+#  shell: sed -i 's/#        listen          8080;/        listen          8080;/g' /etc/zabbix/nginx.conf
+
+#- name: setting address
+#  shell: sed -i 's/#        server_name     example.com;;/        server_name     zabbix.example.com;/g' /etc/zabbix/nginx.conf
+
+- name: enable and restart zabbix
+  systemd:
+    name: zabbix-server
+    enabled: true
+    state: restarted
+
+- name: enable and restart nginx
+  systemd:
+    name: nginx
+    enabled: true
+    state: restarted
+
+server {
+        listen          8080;
+        server_name     example.com;
+
+        root    /usr/share/zabbix;
+
+        index   index.php;
+
+        location = /favicon.ico {
+                log_not_found   off;
+        }
+
+        location / {
+                try_files       $uri $uri/ =404;
+        }
+
+        location /assets {
+                access_log      off;
+                expires         10d;
+        }
+
+        location ~ /\.ht {
+                deny            all;
+        }
+
+        location ~ /(api\/|conf[^\.]|include|locale) {
+                deny            all;
+                return          404;
+        }
+
+        location /vendor {
+                deny            all;
+                return          404;
+        }
+
+        location ~ [^/]\.php(/|$) {
+                fastcgi_pass    unix:/var/run/php/zabbix.sock;
+                fastcgi_split_path_info ^(.+\.php)(/.+)$;
+                fastcgi_index   index.php;
+
+                fastcgi_param   DOCUMENT_ROOT   /usr/share/zabbix;
+                fastcgi_param   SCRIPT_FILENAME /usr/share/zabbix$fastcgi_script_name;
+                fastcgi_param   PATH_TRANSLATED /usr/share/zabbix$fastcgi_script_name;
+
+                include fastcgi_params;
+                fastcgi_param   QUERY_STRING    $query_string;
+                fastcgi_param   REQUEST_METHOD  $request_method;
+                fastcgi_param   CONTENT_TYPE    $content_type;
+                fastcgi_param   CONTENT_LENGTH  $content_length;
+
+                fastcgi_intercept_errors        on;
+                fastcgi_ignore_client_abort     off;
+                fastcgi_connect_timeout         60;
+                fastcgi_send_timeout            180;
+                fastcgi_read_timeout            180;
+                fastcgi_buffer_size             128k;
+                fastcgi_buffers                 4 256k;
+                fastcgi_busy_buffers_size       256k;
+                fastcgi_temp_file_write_size    256k;
+        }
+}
