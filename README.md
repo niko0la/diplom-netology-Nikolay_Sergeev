@@ -126,6 +126,7 @@ zabbix Admin\zabbix
 # Вывод логов вебинтерфейсе kibana
 ![Image alt](https://github.com/niko0la/diplom-netology-Nikolay_Sergeev/blob/main/scrin/nginx.png)
 ![Image alt](https://github.com/niko0la/diplom-netology-Nikolay_Sergeev/blob/main/scrin/server_terra-2.png)
+# Созданные наши web сервера через terraform
 ![Image alt](https://github.com/niko0la/diplom-netology-Nikolay_Sergeev/blob/main/scrin/subnet1.png)
 ![Image alt](https://github.com/niko0la/diplom-netology-Nikolay_Sergeev/blob/main/scrin/subnet2.png)
 ![Image alt](https://github.com/niko0la/diplom-netology-Nikolay_Sergeev/blob/main/scrin/terraform-2.png)
