@@ -114,7 +114,9 @@ Cоздайте ВМ, разверните на ней Elasticsearch. Устан
 zabbix Admin\zabbix
 
 ![Image alt](https://github.com/niko0la/diplom-netology-Nikolay_Sergeev/blob/main/scrin/ansible-starts.png)
+# Ansible установку всех ролей
 ![Image alt](https://github.com/niko0la/diplom-netology-Nikolay_Sergeev/blob/main/scrin/balanser.png)
+# График балансировки
 ![Image alt](https://github.com/niko0la/diplom-netology-Nikolay_Sergeev/blob/main/scrin/curl-Kibana-elastick.png)
 ![Image alt](https://github.com/niko0la/diplom-netology-Nikolay_Sergeev/blob/main/scrin/html_curl-V-linux.png)
 ![Image alt](https://github.com/niko0la/diplom-netology-Nikolay_Sergeev/blob/main/scrin/html_curl-V-ngingx.png)
