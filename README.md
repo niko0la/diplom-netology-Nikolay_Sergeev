@@ -118,8 +118,11 @@ zabbix Admin\zabbix
 ![Image alt](https://github.com/niko0la/diplom-netology-Nikolay_Sergeev/blob/main/scrin/balanser.png)
 # График балансировки
 ![Image alt](https://github.com/niko0la/diplom-netology-Nikolay_Sergeev/blob/main/scrin/curl-Kibana-elastick.png)
+# Тестируем curl запрос и получаем ответ по порту 5601
 ![Image alt](https://github.com/niko0la/diplom-netology-Nikolay_Sergeev/blob/main/scrin/html_curl-V-linux.png)
+# Тестируем curl запрос и получаем ответ по порту 80
 ![Image alt](https://github.com/niko0la/diplom-netology-Nikolay_Sergeev/blob/main/scrin/html_curl-V-ngingx.png)
+# Вывод логов вебинтерфейсе kibana
 ![Image alt](https://github.com/niko0la/diplom-netology-Nikolay_Sergeev/blob/main/scrin/kibana-log.png)
 ![Image alt](https://github.com/niko0la/diplom-netology-Nikolay_Sergeev/blob/main/scrin/nginx.png)
 ![Image alt](https://github.com/niko0la/diplom-netology-Nikolay_Sergeev/blob/main/scrin/server_terra-2.png)
